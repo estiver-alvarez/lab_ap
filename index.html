@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>PDA Simulator</title>
+    <style media="screen">
+      .transition_table {
+        border: 1px solid black;
+        margin: 5px;
+        border-collapse: collapse;
+      }
+      .transition_table td {
+        width: 70px;
+        border: 1px solid grey;
+        text-align: center;
+      }
+      #pda_state {
+        border: 1px solid black;
+        margin: 5px;
+        border-collapse: collapse;
+      }
+      #pda_state td {
+        width: 70px;
+        border: 1px solid grey;
+        text-align: left;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>PDA Simulator</h1>
+
+    <div class="pda_configuration">
+      <table>
+        <tr>
+          <td>States:</td><td><input type="text" class="input_field" id="pda_states"></input></td>
+        </tr>
+        <tr>
+          <td>Alphabet:</td><td><input type="text" class="input_field" id="pda_alphabet"></input></td>
+        </tr>
+        <tr>
+          <td>Stack symbols:</td><td><input type="text" class="input_field" id="pda_stack_symbols"></input></td>
+        </tr>
+        <tr>
+          <td>Defaults:</td>
+          <td>
+            <button type="button" id="default_binary_pda" onclick="populateBinaryPda()">Binary</button>
+            <button type="button" id="default_abc_pda" onclick="populateAbcPda()">ABC</button>
+            <button type="button" id="default_test_pda" onclick="populateTest()">Test</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Generate transitions</td><td><button type="button" id="generate_transitions" onclick="generateTransitionTables()">Generate</button></td>
+        </tr>
+      </table>
+
+
+      <h2>Transition tables</h2>
+      <div id="transition_tables">
+
+      </div>
+    </div>
+
+    <h2>Test</h2>
+    <table>
+      <tr>
+        <td><button type="button" id="process_pda" onclick="processInput()">Compute matches</button></td>
+      </tr>
+      <tr>
+        <td><button type="button" id="test_input" onclick="testInput()">Test input</button></td><td><input type="text" class="input_field" id="pda_input"></input></td>
+      </tr>
+    </table>
+
+    <h2>Accepted words:</h2>
+    <ul class="result" id="accepted_output">
+    </ul>
+  </body>
+  <script src="./dist/main.js" charset="utf-8"></script>
+</html>
